@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             txtSaldo.Text = saldo.ToString();
-            txtCantidad.Text = "0";Pe
+            txtCantidad.Text = "0";
         }
 
         private bool realizarReintegro(double cantidad) 
