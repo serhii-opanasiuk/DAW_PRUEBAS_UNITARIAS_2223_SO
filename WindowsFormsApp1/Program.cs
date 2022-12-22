@@ -16,7 +16,7 @@ namespace GestionBancariaAppNS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new gestionBancariaApp());
+            Application.Run(new GestionBancariaApp());
         }
     }
 }

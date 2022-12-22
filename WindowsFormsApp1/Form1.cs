@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace GestionBancariaAppNS
 {
-    public partial class gestionBancariaApp : Form
+    public partial class GestionBancariaApp : Form
     {
         private double saldo;  
         const int ERR_CANTIDAD_NO_VALIDA = 1;
         const int ERR_SALDO_INSUFICIENTE = 2;
 
-        public gestionBancariaApp(double saldo = 0)
+        public GestionBancariaApp(double saldo = 0)
         {
             InitializeComponent();
             if (saldo > 0)
@@ -29,7 +29,7 @@ namespace GestionBancariaAppNS
 
         public double obtenerSaldo() { return saldo; }
 
-        private int realizarReintegro(double cantidad) 
+        public int realizarReintegro(double cantidad) 
         {
             if (cantidad <= 0)
                 return ERR_CANTIDAD_NO_VALIDA;
@@ -39,7 +39,7 @@ namespace GestionBancariaAppNS
             return 0;
         }
 
-        private int realizarIngreso(double cantidad) {
+        public int realizarIngreso(double cantidad) {
             if (cantidad > 0)
                 return ERR_CANTIDAD_NO_VALIDA;
             saldo -= cantidad;

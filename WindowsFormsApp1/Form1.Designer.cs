@@ -1,6 +1,6 @@
 ﻿namespace GestionBancariaAppNS
 {
-    partial class gestionBancariaApp
+    partial class GestionBancariaApp
     {
         /// <summary>
         /// Variable del diseñador necesaria.
