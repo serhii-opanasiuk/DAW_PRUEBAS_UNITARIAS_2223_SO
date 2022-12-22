@@ -87,7 +87,6 @@
             this.rbIngreso.Text = "Ingreso";
             this.rbIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.rbIngreso.UseVisualStyleBackColor = true;
-            this.rbIngreso.CheckedChanged += new System.EventHandler(this.rbIngreso_CheckedChanged);
             // 
             // rbReintegro
             // 
@@ -113,7 +112,7 @@
             this.btOperar.UseVisualStyleBackColor = true;
             this.btOperar.Click += new System.EventHandler(this.btOperar_Click);
             // 
-            // gestionBancariaApp
+            // GestionBancariaApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,7 +124,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtSaldo);
-            this.Name = "gestionBancariaApp";
+            this.Name = "GestionBancariaApp";
             this.Text = "La Banca Siempre Gana";
             this.ResumeLayout(false);
             this.PerformLayout();
