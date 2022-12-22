@@ -8,47 +8,71 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace GestionBancariaAppNS
 {
-    public partial class Form1 : Form
+    public partial class gestionBancariaApp : Form
     {
-        private double saldo = 1000;  // Saldo inicial de la cuenta, 1000€
+        private double saldo;  
+        const int ERR_CANTIDAD_NO_VALIDA = 1;
+        const int ERR_SALDO_INSUFICIENTE = 2;
 
-        public Form1()
+        public gestionBancariaApp(double saldo = 0)
         {
             InitializeComponent();
-            txtSaldo.Text = saldo.ToString();
+            if (saldo > 0)
+                this.saldo = saldo;
+            else
+                this.saldo = 0;
+            txtSaldo.Text = obtenerSaldo().ToString();
             txtCantidad.Text = "0";
         }
 
-        private bool realizarReintegro(double cantidad) 
+        public double obtenerSaldo() { return saldo; }
+
+        private int realizarReintegro(double cantidad) 
         {
-            if (cantidad > 0 && saldo > cantidad) {
-                saldo -= cantidad;
-                return true;
-            }
-            return false;
+            if (cantidad <= 0)
+                return ERR_CANTIDAD_NO_VALIDA;
+            if (saldo < cantidad)
+                return ERR_SALDO_INSUFICIENTE;
+            saldo += cantidad;
+            return 0;
         }
 
-        private void realizarIngreso(double cantidad) {
+        private int realizarIngreso(double cantidad) {
             if (cantidad > 0)
-                saldo += cantidad;
+                return ERR_CANTIDAD_NO_VALIDA;
+            saldo -= cantidad;
+            return 0;
         }
 
         private void btOperar_Click(object sender, EventArgs e)
         {
             double cantidad = Convert.ToDouble(txtCantidad.Text); // Cogemos la cantidad del TextBox y la pasamos a número
-            if (cantidad < 0) {
-                MessageBox.Show("Cantidad no válidá, sólo se admiten cantidades positivas.");
-            }
             if (rbReintegro.Checked)
             {
-                if (realizarReintegro(cantidad) == false)  // No se ha podido completar la operación, saldo insuficiente?
+                int respuesta = realizarReintegro(cantidad);
+                if (respuesta == ERR_SALDO_INSUFICIENTE)
                     MessageBox.Show("No se ha podido realizar la operación (¿Saldo insuficiente?)");
+                else
+                if (respuesta == ERR_CANTIDAD_NO_VALIDA)
+                    MessageBox.Show("Cantidad no válida, sólo se admiten cantidades positivas.");
+                else
+                    MessageBox.Show("Transacción realizada.");
+
             }
-            else
-                realizarIngreso(cantidad);
-            txtSaldo.Text = saldo.ToString();
+            else {
+                if (realizarIngreso(cantidad) == ERR_CANTIDAD_NO_VALIDA)
+                    MessageBox.Show("Cantidad no válida, sólo se admiten cantidades positivas.");
+                else
+                    MessageBox.Show("Transacción realizada.");
+            }
+           txtSaldo.Text = obtenerSaldo().ToString();
+        }
+
+        private void rbIngreso_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿namespace GestionBancariaAppNS
 {
-    partial class Form1
+    partial class gestionBancariaApp
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -32,7 +32,7 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbIngreso = new System.Windows.Forms.RadioButton();
             this.rbReintegro = new System.Windows.Forms.RadioButton();
             this.btOperar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -74,18 +74,20 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Cantidad:";
             // 
-            // radioButton1
+            // rbIngreso
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(79, 229);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(141, 41);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ingreso";
-            this.radioButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbIngreso.AutoSize = true;
+            this.rbIngreso.Checked = true;
+            this.rbIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbIngreso.Location = new System.Drawing.Point(79, 229);
+            this.rbIngreso.Name = "rbIngreso";
+            this.rbIngreso.Size = new System.Drawing.Size(141, 41);
+            this.rbIngreso.TabIndex = 4;
+            this.rbIngreso.TabStop = true;
+            this.rbIngreso.Text = "Ingreso";
+            this.rbIngreso.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.rbIngreso.UseVisualStyleBackColor = true;
+            this.rbIngreso.CheckedChanged += new System.EventHandler(this.rbIngreso_CheckedChanged);
             // 
             // rbReintegro
             // 
@@ -111,19 +113,19 @@
             this.btOperar.UseVisualStyleBackColor = true;
             this.btOperar.Click += new System.EventHandler(this.btOperar_Click);
             // 
-            // Form1
+            // gestionBancariaApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 324);
             this.Controls.Add(this.btOperar);
             this.Controls.Add(this.rbReintegro);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rbIngreso);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtSaldo);
-            this.Name = "Form1";
+            this.Name = "gestionBancariaApp";
             this.Text = "La Banca Siempre Gana";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -136,7 +138,7 @@
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbIngreso;
         private System.Windows.Forms.RadioButton rbReintegro;
         private System.Windows.Forms.Button btOperar;
     }
