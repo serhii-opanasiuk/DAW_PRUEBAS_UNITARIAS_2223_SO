@@ -23,13 +23,13 @@ namespace GestionBancariaAppNS
                 this.saldo = saldo;
             else
                 this.saldo = 0;
-            txtSaldo.Text = obtenerSaldo().ToString();
+            txtSaldo.Text = ObtenerSaldo().ToString();
             txtCantidad.Text = "0";
         }
 
-        public double obtenerSaldo() { return saldo; }
+        public double ObtenerSaldo() { return saldo; }
 
-        public int realizarReintegro(double cantidad) 
+        public int RealizarReintegro(double cantidad) 
         {
             if (cantidad <= 0)
                 return ERR_CANTIDAD_NO_VALIDA;
@@ -39,7 +39,7 @@ namespace GestionBancariaAppNS
             return 0;
         }
 
-        public int realizarIngreso(double cantidad) {
+        public int RealizarIngreso(double cantidad) {
             if (cantidad > 0)
                 return ERR_CANTIDAD_NO_VALIDA;
             saldo -= cantidad;
@@ -51,7 +51,7 @@ namespace GestionBancariaAppNS
             double cantidad = Convert.ToDouble(txtCantidad.Text); // Cogemos la cantidad del TextBox y la pasamos a número
             if (rbReintegro.Checked)
             {
-                int respuesta = realizarReintegro(cantidad);
+                int respuesta = RealizarReintegro(cantidad);
                 if (respuesta == ERR_SALDO_INSUFICIENTE)
                     MessageBox.Show("No se ha podido realizar la operación (¿Saldo insuficiente?)");
                 else
@@ -62,12 +62,12 @@ namespace GestionBancariaAppNS
 
             }
             else {
-                if (realizarIngreso(cantidad) == ERR_CANTIDAD_NO_VALIDA)
+                if (RealizarIngreso(cantidad) == ERR_CANTIDAD_NO_VALIDA)
                     MessageBox.Show("Cantidad no válida, sólo se admiten cantidades positivas.");
                 else
                     MessageBox.Show("Transacción realizada.");
             }
-           txtSaldo.Text = obtenerSaldo().ToString();
+           txtSaldo.Text = ObtenerSaldo().ToString();
         }
     }
 }
